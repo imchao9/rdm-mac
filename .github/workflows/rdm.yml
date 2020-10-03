@@ -110,8 +110,8 @@ jobs:
         lupdate rdm.pro
         lrelease -verbose rdm.pro
         brew install tree && tree -a
-    # 去掉initUpdater不然报Please download new version of Redis Desktop Manager，不能使用
         sed -i '.back' 's/initUpdater();/\/\/initUpdater();/g' ./app/app.cpp
+    # 去掉initUpdater不然报Please download new version of Redis Desktop Manager，不能使用
     # macdeployqt
     # https://doc.qt.io/qt-5/macos-deployment.html
     # Qt Translations are not being copied
