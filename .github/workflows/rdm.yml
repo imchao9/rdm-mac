@@ -3,12 +3,12 @@
 name: CI
 
 # Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the master branch
+# events but only for the main branch
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -54,9 +54,9 @@ jobs:
         sudo xcode-select -s /Applications/Xcode_10.3.app/Contents/Developer
         cd rdm/src/resources/
         cp Info.plist.sample Info.plist
-        sed -i '.back' 's/0.0.0/2020.1/g' Info.plist
+        sed -i '.back' 's/0.0.0/2020.4/g' Info.plist
         cd $GITHUB_WORKSPACE/rdm/src
-        sed -i '.back' 's/^\(\s*\)VERSION=.*/\1VERSION=2020.1/g' rdm.pro
+        sed -i '.back' 's/^\(\s*\)VERSION=.*/\1VERSION=2020.4/g' rdm.pro
         mkdir -p $GITHUB_WORKSPACE/rdm/bin/osx/release
         touch $GITHUB_WORKSPACE/rdm/bin/osx/release/setup.cfg
         cd $GITHUB_WORKSPACE/rdm/bin/osx/release/
@@ -75,10 +75,10 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
       with:
-        tag_name: 'v2020.1'
-        release_name: 'v2020.1-ci'  
+        tag_name: 'v2020.4'
+        release_name: 'v2020.4-ci'  
         body: |
-          V2020.1-CI
+          V2020.4-CI
           - Build-in Pickle formatter now recognizes numpy.array, pandas.DataFrame and pandas.Series
           - Value now can be saved as file
         draft: false
